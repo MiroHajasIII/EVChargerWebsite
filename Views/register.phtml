@@ -1,0 +1,58 @@
+<?php require('template/header.phtml') ?>
+    <!-- tag above implements the reusable header.phtml file -->
+
+<?php
+if(!isset($_SESSION['submit'])) { ?>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <div class="mb-3 col-md-5">
+            <label>Email *</label>
+            <input class="form-control form-control-sm" type="email" name="username" placeholder="J.Doe@gmail.com" required/>
+        </div>
+        <div class="mb-3 col-md-5">
+            <label>Full name *</label>
+            <input class="form-control form-control-sm" type="text" name="fullname" placeholder="John Doe" required/>
+        </div>
+        <div class="mb-3 col-md-5">
+            <label>Password *</label>
+            <input class="form-control form-control-sm" type="password" name="password" placeholder="***********" required/>
+        </div>
+        <div class="mb-3 col-md-5">
+            <label>Photo</label>
+            <input class="form-control form-control-sm" type="text" name="photo" placeholder="https://www.robohash.org/..."/>
+        </div>
+        <div class="mb-3 col-md-5">
+            <label>Phone Number</label>
+            <input class="form-control form-control-sm" type="text" name="phoneNumber" placeholder="+77 123 456 7890"/>
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Register" name="registerBtn"/>
+    </form>
+
+    <div>
+        <h3><br>Anything marked with an '*' is required.</h3>
+    </div>
+
+<?php } else { ?>
+
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <div class="mb-3 col-md-5">
+            <label>Welcome to Global EVs </label>
+        </div>
+    </form>
+
+    <?php
+}
+//commented out as only used for testing
+//echo '-----==== DETAILS BELOW ARE FROM REGISTER.PHTML ====-----<br>';
+//echo '<pre>REQUEST - ';
+//print_r($_REQUEST);
+//echo '<br>SESSION - ';
+//print_r($_SESSION);
+//echo '<br>POST - ';
+//print_r($_POST);
+//echo '</pre>';
+//echo '<br><br><br><br>';
+?>
+
+    <!-- tag below implements the reusable footer.phtml file -->
+<?php require('template/footer.phtml') ?>

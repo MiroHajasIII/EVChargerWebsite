@@ -1,0 +1,59 @@
+<?php require('template/header.phtml') ?>
+
+
+
+<!-- LEAFLET IMPLEMENTATION AREA -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
+<!-- END OF LEAFLET IMPLEMENTATION AREA -->
+
+
+<!-- SEARCH DATA AREA FOUND BELOW -->
+<div class="mx-auto">
+    <form method="POST">
+        <label>Search Your Desired Charger Location:</label>
+        <input id="searchInput" class="form-control form-control-sm mb-3" type="text" name="searchData" placeholder="Enter Desired Address, City or Postcode">
+        <p>Once you have finished searching, please scroll down to find the interactive map of your results.
+            <br><strong>Displaying 10 - 15 Items per search update</strong></p>
+    </form>
+</div>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <br>
+    <table id="mainResultsTable" class="table table-hover table-secondary">
+        <thead>
+        <tr><th><br>ID</th><th>Address</th><th>City</th><th>Postcode</th><th>Lat</th><th>Lng</th><th>Cost</th><th>||</th><th>Owner Email</th><th>Owner Name</th><th>Owner Photo</th><th>Owner PhoneNumber</th></tr>
+        </thead>
+
+        <!-- Data from the ChargersDataSet containing all the stored ChargePoints data will be replaced as soon as the javascript is launched; Once the search text field has a new value entered into it -->
+        <tbody id="chargersTableBody">
+        <?php foreach ($view->chargersDataSet as $chargerData) {
+            echo '<tr> <td>' . $chargerData->getChargerID() . '</td> <td>' . $chargerData->getAddress1() . '</td> <td>' . $chargerData->getAddress2() . '</td> <td>' . $chargerData->getPostcode() . '</td> <td>' . $chargerData->getLat() . '</td> <td>' . $chargerData->getLng() . '</td> <td> ' . "£" . $chargerData->getCost() . '</td> <td>' . "||" . '</td> <td>' . $chargerData->getOwnerUsername() . '</td> <td>' . $chargerData->getOwnerFullname() . '</td> <td>' . '<img src="' . $chargerData->getOwnerPhoto() . '" alt="EV Charge-point Owner Profile Picture">' . '</td> <td>' . $chargerData->getOwnerPhoneNumber() . '</td> </td> </tr>';
+        } ?>
+        </tbody>
+    </table>
+</form>
+<!-- END OF SEARCH DATA AREA -->
+
+<!-- MAP DATA AREA FOUND BELOW -->
+<div id="mapElement"><h1>Map Search Results</h1></div>   <!-- Map header and coords details for readability -->
+<p>Users Current Location:</p>
+<p id="resultText">Error: No Location Pulled</p>
+<div id="resultTextContainer">
+    <form method="POST">
+        <input class="btn btn-secondary mb-3" type="submit" value="Reset Search" name="resetBtn">
+    </form>
+</div>
+<div id="map"></div>                                <!-- Area where the map will be located -->
+<!-- END OF MAP DATA AREA -->
+
+
+<!-- LOCATION FOR SCRIPTS TO BE LOADED; END OF HTML CODE PROVIDES FASTER HTML LOADING TIMES  -->
+<script src="js/geolocation.js"></script>          <!-- Leaflet implementation needed after div and initialisation code -->
+<script src="js/liveSearch_v2.js"></script>        <!-- Live search JavaScript implementation -->
+
+<?php require('template/footer.phtml') ?>

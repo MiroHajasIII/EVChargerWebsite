@@ -1,0 +1,91 @@
+body {
+    background-color: lightgray;
+}
+
+#footer {
+    text-align: center;
+    color: white;
+}
+
+#mapElement {
+    margin: auto;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    max-width: 370px;
+}
+
+#map {
+    margin: auto;
+    padding-top: 10%;
+    width: 90%;
+    height: 600px;
+}
+
+#resultTextContainer {
+    margin: auto auto auto auto;
+}
+
+#resultButton {
+    margin-right: 50px;
+}
+
+#mainResultsTable {
+    max-width: 90%;
+}
+
+#searchInput {
+    max-width: 40%;
+}
+
+form {
+    margin: auto;
+}
+
+* {
+    font-size: 96%;
+}
+
+#markingSchemeImg1 ,
+#markingSchemeImg2 {
+    width: 95%;
+}
+
+/* LEAFLET CSS OVERRIDING STATEMENTS FOUND BELOW */
+
+.leaflet-control.custom-button {
+    color: black;
+    border-radius: 4px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 75px;
+    background-color: #fff;
+    border: 2px solid #bdbdbd;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control.custom-button {
+    background-color: #fff;
+    opacity: 0.8;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover,
+.leaflet-control.custom-button:hover {
+    opacity: 1;
+}
+
+
+.leaflet-control.custom-button:hover {
+    background-color: #f4f4f4
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background-color: purple;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 1);
+}

@@ -1,0 +1,23 @@
+<?php require('template/header.phtml') ?>
+
+<!-- This webpage has been discontinued from the final product of the website -->
+<!-- Used merely for testing -->
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <br>
+
+    <table class="table table-hover table-secondary">
+        <thead>
+        <tr><th><br>ID</th><th>Username</th><th>Fullname</th><th>Password</th><th>Photo</th><th>Number<br></th></tr>
+        </thead>
+
+        <tbody>
+        <!-- PHP foreach loop to display all the information in each of the userData objects -->
+        <?php foreach ($view->usersDataSet as $userData) {
+            echo '<tr> <td>' . $userData->getUserID() . '</td> <td>' . $userData->getUsername() . '</td> <td>' . $userData->getFullname() . '</td> <td>' . $userData->getPassword() . '</td> <td>' . '<img src="' . $userData->getPhoto() . '" alt="User Profile Picture">' . '</td> <td>' . $userData->getPhoneNumber() . '</td> </td> </tr>';
+        } ?>
+        </tbody>
+    </table>
+</form>
+
+<?php require('template/footer.phtml') ?>

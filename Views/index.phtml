@@ -1,0 +1,49 @@
+<?php require('template/header.phtml') ?>
+<!-- tag above implements the reusable header.phtml file -->
+
+<?php
+if(!isset($_SESSION['username'])) {
+    ?>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <div class="mb-3 col-md-5">
+            <label>Email: </label>
+            <input class="form-control form-control-sm" type="email" name="username" placeholder="John.Doe@gmail.com" required/>
+        </div>
+        <div class="mb-3 col-md-5">
+            <label>Password: </label>
+            <input class="form-control form-control-sm" type="password" name="password" placeholder="***********" required/>
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary mb-3" type="submit" value="Submit" name="loginBtn"/>
+    </form>
+
+    <div>
+        <label>Click here if you would like to <a href="register.php">REGISTER</a> instead!</label>
+    </div>
+
+<?php } else { ?>
+
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <div class="mb-3 col-md-5">
+            <label>You are logged in - Welcome!</label>
+        </div>
+        <div class="mb-3 col-md-5">
+            <input class="btn btn-secondary" type="submit" value="Logout" name="logoutBtn"/>
+        </div>
+    </form>
+
+<?php
+}
+//commented out as only used for testing
+//echo '<br>-----==== DETAILS BELOW ARE FROM INDEX.PHTML ====-----';
+//echo '<pre>REQUEST - ';
+//print_r($_REQUEST);
+//echo '<br>SESSION - ';
+//print_r($_SESSION);
+//echo '<br>POST - ';
+//print_r($_POST);
+//echo '</pre>';
+?>
+
+<!-- tag below implements the reusable footer.phtml file -->
+<?php require('template/footer.phtml') ?>
